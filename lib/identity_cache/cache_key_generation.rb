@@ -9,16 +9,16 @@ module IdentityCache
 
       def rails_cache_key_prefix
         @rails_cache_key_prefix ||= begin
-          "IDC:blob:#{base_class.name}:#{IdentityCache.memcache_hash(IdentityCache.schema_to_string(columns))}:"
+          "IDC:blob:#{base_class.name}:#{CountryManager.country}:#{IdentityCache.memcache_hash(IdentityCache.schema_to_string(columns))}:"
         end
       end
 
       def rails_cache_index_key_for_fields_and_values(fields, values)
-        "IDC:index:#{base_class.name}:#{rails_cache_string_for_fields_and_values(fields, values)}"
+        "IDC:index:#{base_class.name}:#{CountryManager.country}:#{rails_cache_string_for_fields_and_values(fields, values)}"
       end
 
       def rails_cache_key_for_attribute_and_fields_and_values(attribute, fields, values)
-        "IDC:attribute:#{base_class.name}:#{attribute}:#{rails_cache_string_for_fields_and_values(fields, values)}"
+        "IDC:attribute:#{base_class.name}:#{CountryManager.country}:#{attribute}:#{rails_cache_string_for_fields_and_values(fields, values)}"
       end
 
       def rails_cache_string_for_fields_and_values(fields, values)
