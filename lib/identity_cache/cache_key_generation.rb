@@ -22,7 +22,7 @@ module IdentityCache
       end
 
       def rails_cache_string_for_fields_and_values(fields, values)
-        "#{fields.join('/')}:#{IdentityCache.memcache_hash(values.join('/'))}"
+        "#{CountryManager.country}:#{fields.join('/')}:#{IdentityCache.memcache_hash(values.join('/'))}"
       end
     end
 
